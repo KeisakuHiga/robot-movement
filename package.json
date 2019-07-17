@@ -1,0 +1,22 @@
+{
+  "name": "robot-movement",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeisakuHiga/robot-movement.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KeisakuHiga/robot-movement/issues"
+  },
+  "homepage": "https://github.com/KeisakuHiga/robot-movement#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.9"
+  }
+}
