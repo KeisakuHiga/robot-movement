@@ -8,7 +8,6 @@ class Robot {
     this.directions = ['N', 'E', 'S', 'W']
   }
 
-
   move = () => {
     let option = this.direction
     switch(option) {
@@ -65,6 +64,9 @@ class Robot {
     }
   }
 
+  report = () => {
+    console.log(`${this.x}, ${this.y}, ${this.direction}`)
+  }
 }
 
 const run = () => {
@@ -94,11 +96,11 @@ const run = () => {
   }
 
   const newRobot = new Robot(x, y, direction)
-  // newRobot.move()
-  // newRobot.left()
-  newRobot.right()
-  newRobot.right()
-  console.log(newRobot)
+  newRobot.move()
+  newRobot.move()
+  newRobot.left()
+  newRobot.move()
+  newRobot.report()
 }
 
 run()
