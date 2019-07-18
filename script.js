@@ -5,7 +5,9 @@ class Robot {
     this.x = x
     this.y = y
     this.direction = direction
+    this.directions = ['N', 'E', 'S', 'W']
   }
+
 
   move = () => {
     let option = this.direction
@@ -43,6 +45,26 @@ class Robot {
     }
   }
 
+  left = () => {
+    let index = this.directions.findIndex(d => d === this.direction)
+    if (!index) {
+      this.direction = this.directions[this.directions.length - 1]
+    } else {
+      index--
+      this.direction = this.directions[index]
+    }
+  }
+
+  right = () => {
+    let index = this.directions.findIndex(d => d === this.direction)
+    if (index === 3) {
+      this.direction = this.directions[0]
+    } else {
+      index++
+      this.direction = this.directions[index]
+    }
+  }
+
 }
 
 const run = () => {
@@ -72,12 +94,10 @@ const run = () => {
   }
 
   const newRobot = new Robot(x, y, direction)
-  newRobot.move()
-  newRobot.move()
-  newRobot.move()
-  newRobot.move()
-  newRobot.move()
-  newRobot.move()
+  // newRobot.move()
+  // newRobot.left()
+  newRobot.right()
+  newRobot.right()
   console.log(newRobot)
 }
 
