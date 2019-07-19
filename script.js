@@ -1,5 +1,4 @@
 const readlineSync = require('readline-sync');
-
 class Robot {
   constructor() {
     this.x = 0
@@ -9,33 +8,33 @@ class Robot {
     this.place()
   }
 
-  place = () => {
-    console.log('You can set a start position where your toy robot will be placed.')
-    console.log('')
-    console.log('Where would you like to set your toy robot?')
-    console.log('')
-    console.log('Set the start position x, y and a direction!')
-    console.log('')
-    this.x = readlineSync.questionInt('Type a number from 0 ~ 4 for "x"')
-    while(this.x < 0 || this.x > 4 ) {
-      console.log('Warning! Please type a valid number(0 ~ 4)')
-      console.log('')
-      this.x = readlineSync.questionInt('Type a number from 0 ~ 4 for "x"')
-    }
-    console.log('')
-    this.y = readlineSync.questionInt('Type a number from 0 ~ 4 for "y"')
-    while(this.y < 0 || this.y > 4 ) {
-      console.log('Warning! Please type a valid number(0 ~ 4)')
-      console.log('')
-      this.y = readlineSync.questionInt('Type a number from 0 ~ 4 for "y"')
-    }
+  printCommands = () => {
+    console.log(`\nRobot is at [${this.x}, ${this.y}] and facing ${this.direction}\n`)
+    console.log('Choose your command!')
+    const userChoice = readlineSync.questionInt('1. Place the robot to a new place!\n2. Move forward!\n3. Turn left!\n4. Turn right!\n5. Report the place where the robot is!\n6. Quit!\n');
+    return userChoice
+  }
 
-    console.log('')
-    this.direction = readlineSync.question('Type a direction from "N", "S", "E" and "W"').toUpperCase() 
+  place = () => {
+    this.x = readlineSync.questionInt('Type a number from 0 ~ 4 for "x"\n')
+    while(this.x < 0 || this.x > 4 ) {
+      console.clear()
+      console.log('Warning! Please type a valid number(0 ~ 4)\n')
+      this.x = readlineSync.questionInt('Type a number from 0 ~ 4 for "x"\n')
+    }
+    console.clear()
+    this.y = readlineSync.questionInt('Type a number from 0 ~ 4 for "y"\n')
+    while(this.y < 0 || this.y > 4 ) {
+      console.clear()
+      console.log('Warning! Please type a valid number(0 ~ 4)\n')
+      this.y = readlineSync.questionInt('Type a number from 0 ~ 4 for "y"\n')
+    }
+    console.clear()
+    this.direction = readlineSync.question('Type a direction from "N", "S", "E" and "W"\n').toUpperCase() 
     while(this.direction !== "N" && this.direction !== "S" && this.direction !== "E" && this.direction !== "W") {
-      console.log('Wording! Please type a valid direction!')
-      console.log('')
-      this.direction = readlineSync.question('Type a direction from "N", "S", "E" and "W"').toUpperCase()
+      console.clear()
+      console.log('Wording! Please type a valid direction!\n')
+      this.direction = readlineSync.question('Type a direction from "N", "S", "E" and "W"\n').toUpperCase()
     }
   }
 
@@ -98,15 +97,47 @@ class Robot {
   report = () => {
     console.log(`${this.x}, ${this.y}, ${this.direction}`)
   }
+
+  run = () => {
+    let command
+    while( command !== 6) {
+      command = this.printCommands()
+      switch(command) {
+        case 1:
+          console.clear()
+          this.place()
+  
+          break;
+        case 2:
+          this.move()
+          console.clear()
+          console.log('Robot moved forward!\n')
+          break;
+        case 3:
+          this.left()
+          console.clear()
+          console.log('Robot turned left!\n')
+          break;
+        case 4:
+          this.right()
+          console.clear()
+          console.log('Robot turned right!\n')
+          break;
+        case 5:
+          console.clear()
+          console.log('Robot is at...\n')
+          this.report()
+          break;
+        case 6:
+          console.clear()
+          console.log('See you!')
+          break;
+        default:
+          console.log('Type a validate command number!\n')
+      }
+    }
+  }
 }
 
-const run = () => {
-  const newRobot = new Robot()
-  newRobot.move()
-  newRobot.move()
-  newRobot.left()
-  newRobot.move()
-  newRobot.report()
-}
-
-run()
+const newRobot = new Robot()
+newRobot.run()
