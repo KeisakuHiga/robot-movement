@@ -3,68 +3,68 @@ class Robot {
   constructor() {
     this.x = 0
     this.y = 0
-    this.direction = 'N'
-    this.directions = ['N', 'E', 'S', 'W']
+    this.f = 'NORTH'
+    this.directions = ['NORTH', 'EAST', 'SOUTH', 'WEST']
     this.place()
   }
 
   printCommands = () => {
-    console.log(`\nRobot is at [${this.x}, ${this.y}] and facing ${this.direction}\n`)
+    console.log(`\nRobot is at [${this.x}, ${this.y}] and facing ${this.f}\n`)
     console.log('Choose your command!')
     const userChoice = readlineSync.questionInt('1. Place the robot to a new place!\n2. Move forward!\n3. Turn left!\n4. Turn right!\n5. Report the place where the robot is!\n6. Quit!\n');
     return userChoice
   }
 
   place = () => {
-    this.x = readlineSync.questionInt('Type a number from 0 ~ 4 for "x"\n')
+    this.x = readlineSync.questionInt('Type a number from 0 ~ 4 for "X"\n')
     while(this.x < 0 || this.x > 4 ) {
       console.clear()
-      console.log('Warning! Please type a valid number(0 ~ 4)\n')
-      this.x = readlineSync.questionInt('Type a number from 0 ~ 4 for "x"\n')
+      console.log('WARNING! Please type a valid number(0 ~ 4)\n')
+      this.x = readlineSync.questionInt('Type a number from 0 ~ 4 for "X"\n')
     }
     console.clear()
-    this.y = readlineSync.questionInt('Type a number from 0 ~ 4 for "y"\n')
+    this.y = readlineSync.questionInt('Type a number from 0 ~ 4 for "Y"\n')
     while(this.y < 0 || this.y > 4 ) {
       console.clear()
-      console.log('Warning! Please type a valid number(0 ~ 4)\n')
-      this.y = readlineSync.questionInt('Type a number from 0 ~ 4 for "y"\n')
+      console.log('WARNING! Please type a valid number(0 ~ 4)\n')
+      this.y = readlineSync.questionInt('Type a number from 0 ~ 4 for "Y"\n')
     }
     console.clear()
-    this.direction = readlineSync.question('Type a direction from "N", "S", "E" and "W"\n').toUpperCase() 
-    while(this.direction !== "N" && this.direction !== "S" && this.direction !== "E" && this.direction !== "W") {
+    this.f = readlineSync.question('Type a direction from "NORTH", "SOUTH", "EAST" and "WEST"\n').toUpperCase() 
+    while(this.f !== "NORTH" && this.f !== "SOUTH" && this.f !== "EAST" && this.f !== "WEST") {
       console.clear()
-      console.log('Wording! Please type a valid direction!\n')
-      this.direction = readlineSync.question('Type a direction from "N", "S", "E" and "W"\n').toUpperCase()
+      console.log('WARNING! Please type a valid direction!\n')
+      this.f = readlineSync.question('Type a direction from "NORTH", "SOUTH", "EAST" and "WEST"\n').toUpperCase()
     }
   }
 
   move = () => {
-    let option = this.direction
+    let option = this.f
     switch(option) {
-      case "N":
+      case "NORTH":
         if(this.y === 4) {
-          console.log('You cannot move to North!')
+          console.log('You cannot move to NORTH!')
         } else {
           this.y++
         }
         break;
-      case "S":
+      case "SOUTH":
         if(this.y === 0) {
-          console.log('You cannot move to South!')
+          console.log('You cannot move to SOUTH!')
         } else {
           this.y--
         }
         break;
-      case "E":
+      case "EAST":
         if(this.x === 4) {
-          console.log('You cannot move to East!')
+          console.log('You cannot move to EAST!')
         } else {
           this.x++
         }
         break;
-      case "W":
+      case "WEST":
         if(this.x === 0) {
-          console.log('You cannot move to West!')
+          console.log('You cannot move to WEST!')
         } else {
           this.x--
         }
@@ -75,27 +75,27 @@ class Robot {
   }
 
   left = () => {
-    let index = this.directions.findIndex(d => d === this.direction)
+    let index = this.directions.findIndex(d => d === this.f)
     if (!index) {
-      this.direction = this.directions[this.directions.length - 1]
+      this.f = this.directions[this.directions.length - 1]
     } else {
       index--
-      this.direction = this.directions[index]
+      this.f = this.directions[index]
     }
   }
 
   right = () => {
-    let index = this.directions.findIndex(d => d === this.direction)
+    let index = this.directions.findIndex(d => d === this.f)
     if (index === 3) {
-      this.direction = this.directions[0]
+      this.f = this.directions[0]
     } else {
       index++
-      this.direction = this.directions[index]
+      this.f = this.directions[index]
     }
   }
 
   report = () => {
-    console.log(`${this.x}, ${this.y}, ${this.direction}`)
+    console.log(`${this.x}, ${this.y}, ${this.f}`)
   }
 
   run = () => {
