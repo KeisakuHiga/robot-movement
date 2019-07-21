@@ -6,11 +6,7 @@ class Robot {
     this.f = 'NORTH'
     this.directions = ['NORTH', 'EAST', 'SOUTH', 'WEST']
   }
-
-  talk = () => {
-    return 'hello!'
-  }
-
+  
   printCommands = () => {
     console.log(`\nRobot is at [${this.x}, ${this.y}] and facing ${this.f}\n`)
     console.log('Choose your command!')
