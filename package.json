@@ -4,8 +4,8 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "start": "node src/script.js",
-    "test": "mocha"
+    "start": "node src/app.js",
+    "test": "mocha || true"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "readline-sync": "^1.4.9"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "mocha": "^6.2.0"
   }
 }

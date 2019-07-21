@@ -1,8 +1,3 @@
-function sum(a, b) {
-  return a + b;
-}
-module.exports = sum;
-
 const readlineSync = require('readline-sync');
 class Robot {
   constructor() {
@@ -10,7 +5,10 @@ class Robot {
     this.y = 0
     this.f = 'NORTH'
     this.directions = ['NORTH', 'EAST', 'SOUTH', 'WEST']
-    this.place()
+  }
+
+  talk = () => {
+    return 'hello!'
   }
 
   printCommands = () => {
@@ -146,6 +144,4 @@ class Robot {
   }
 }
 
-const newRobot = new Robot()
-newRobot.run()
-
+module.exports = Robot

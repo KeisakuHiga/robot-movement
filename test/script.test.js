@@ -1,5 +1,11 @@
-const assert = require('assert')
+const Robot = require('../src/script')
+const assert = require('chai').assert
 
-it('should return true', () => {
-  assert.equal(true, true)
+describe('Testing Robot class', () => {
+
+  let robot = new Robot
+
+  it('check that robot talks string', () => {
+    assert.isString(robot.talk(), 'string')
+  })
 })
