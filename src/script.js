@@ -80,20 +80,20 @@ class Robot {
   left = () => {
     let index = this.directions.findIndex(d => d === this.f)
     if (!index) {
-      this.f = this.directions[this.directions.length - 1]
+      return this.f = this.directions[this.directions.length - 1]
     } else {
       index--
-      this.f = this.directions[index]
+      return this.f = this.directions[index]
     }
   }
 
   right = () => {
     let index = this.directions.findIndex(d => d === this.f)
     if (index === 3) {
-      this.f = this.directions[0]
+      return this.f = this.directions[0]
     } else {
       index++
-      this.f = this.directions[index]
+      return this.f = this.directions[index]
     }
   }
 

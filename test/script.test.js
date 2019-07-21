@@ -18,7 +18,7 @@ describe('Robot class', () => {
       assert.equal(robot.x, 0)
       assert.equal(robot.y, 0)
       assert.equal(robot.f, 'NORTH')
-      expect(robot.directions).to.be.an('array')//.that.does.not.include(2);
+      expect(robot.directions).to.be.an('array').with.lengthOf(4)
     })
   })
   
@@ -47,18 +47,49 @@ describe('Robot class', () => {
   })
 
   describe('left()', ()=> {
-    it('', () => {
-      
+    it('when robot faces NORTH, it will turn to WEST', () => {
+      if(robot.f === 'NORTH') {
+        assert.equal(robot.left(), 'WEST')
+      }
     })
-
-
+    it('when robot faces WEST, it will turn to SOUTH', () => {
+      if(robot.f === 'WEST') {
+        assert.equal(robot.left(), 'SOUTH')
+      }
+    })
+    it('when robot faces SOUTH, it will turn to EAST', () => {
+      if(robot.f === 'SOUTH') {
+        assert.equal(robot.left(), 'EAST')
+      }
+    })
+    it('when robot faces EAST, it will turn to NORTH', () => {
+      if(robot.f === 'EAST') {
+        assert.equal(robot.left(), 'NORTH')
+      }
+    })
   })
 
   describe('right()', ()=> {
-    it('', () => {
-      
+    it('when robot faces NORTH, it will turn to EAST', () => {
+      if(robot.f === 'NORTH') {
+        assert.equal(robot.right(), 'EAST')
+      }
     })
-
+    it('when robot faces WEST, it will turn to NORTH', () => {
+      if(robot.f === 'WEST') {
+        assert.equal(robot.right(), 'NORTH')
+      }
+    })
+    it('when robot faces SOUTH, it will turn to WEST', () => {
+      if(robot.f === 'SOUTH') {
+        assert.equal(robot.right(), 'WEST')
+      }
+    })
+    it('when robot faces EAST, it will turn to SOUTH', () => {
+      if(robot.f === 'EAST') {
+        assert.equal(robot.right(), 'SOUTH')
+      }
+    })
 
   })
 
