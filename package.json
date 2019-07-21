@@ -4,7 +4,8 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/script.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/KeisakuHiga/robot-movement#readme",
   "dependencies": {
     "readline-sync": "^1.4.9"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0"
   }
 }
