@@ -44,32 +44,32 @@ class Robot {
         if(this.y === 4) {
           console.log('You cannot move to NORTH!')
         } else {
-          this.y++
           console.log('Robot moved forward!\n')
+          return this.y++
         }
         break;
       case "SOUTH":
         if(this.y === 0) {
           console.log('You cannot move to SOUTH!')
         } else {
-          this.y--
           console.log('Robot moved forward!\n')
+          return this.y--
         }
         break;
       case "EAST":
         if(this.x === 4) {
           console.log('You cannot move to EAST!')
         } else {
-          this.x++
           console.log('Robot moved forward!\n')
+          return this.x++
         }
         break;
       case "WEST":
         if(this.x === 0) {
           console.log('You cannot move to WEST!')
         } else {
-          this.x--
           console.log('Robot moved forward!\n')
+          return this.x--
         }
         break;
       default:
