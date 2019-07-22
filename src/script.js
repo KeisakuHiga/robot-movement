@@ -1,29 +1,23 @@
 const fs = require('fs')
 
 class Robot {
-  constructor() {
+  constructor(inputFilePath) {
     this.x = 0
     this.y = 0
     this.f = 'NORTH'
     this.directions = ['NORTH', 'EAST', 'SOUTH', 'WEST']
     this.commands = []
-    this.readInputData()
+    this.readInputData(inputFilePath)
     this.run(this.commands)
   }
 
 // read input data function from text file
-  readInputData = () => {
-    this.commands = fs.readFileSync('src/input/input1.txt').toString().split("\n")
+  readInputData = (inputFilePath) => {
+    this.commands = fs.readFileSync(inputFilePath).toString().split("\n")
   }
-// this will return an object that has x, y and f data, and the data will be
-// passed to place function which receive the object as an argument
 
-// if the first line of input data is not PLACE command,
-// all commands written after the first line should be ignored
-
-// if a PLACE command gives greater than 4 for x and y, and wrong directions
-// this command will return null
-
+  // if a PLACE command gives greater than 4 for x and y, and wrong directions
+  // this command will return null
   place = (line) => {
     this.x = line.slice(6,7)
     this.y = line.slice(8,9)
@@ -91,15 +85,21 @@ class Robot {
     }
   }
 
-// output data function which creates a text file to show the inputs data and 
-// the result
   report = () => {
-    // fs.writeFile('src/output', data, (err) => {
-    //   if(err) throw err;
-    // })
-    console.log(`${this.x}, ${this.y}, ${this.f}`)
+    const report = `Robot is at X: ${this.x}, Y: ${this.y} and facing ${this.f}`
+    console.log(report)
   }
 
+  // output data function which creates a text file to show the inputs data and the result
+  output = () => {
+    const output = `Output: ${this.x}, ${this.y}, ${this.f}`
+    fs.writeFile('src/output/output.txt', output, (err) => {
+      if(err) throw err;
+    })
+  }
+
+  // if the first line of input data is not PLACE command,
+  // all commands written after the first line should be ignored
   run = (commands) => {
     if(!commands[0].includes('PLACE')) {
       return null
@@ -126,12 +126,15 @@ class Robot {
                 this.report()
                 break;
               default:
-                return null
+                throw('error')
             }
           }
         })
+        // create output file after all commands having done
+        this.output()
       } catch(err) {
         console.log(err)
+        return err
       }
     }
   }

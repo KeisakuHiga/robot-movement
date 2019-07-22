@@ -1,2 +1,6 @@
 const Robot = require('./script')
-const newRobot = new Robot()
+const inputFilePath ='src/input/input1.txt'
+// const inputFilePath ='src/input/input2.txt'
+// const inputFilePath ='src/input/input3.txt'
+// const inputFilePath ='src/input/invalidInput.txt'
+const newRobot = new Robot(inputFilePath)

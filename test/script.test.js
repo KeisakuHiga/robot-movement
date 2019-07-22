@@ -6,8 +6,8 @@ const should = require('chai').should()
 const sinon  = require('sinon')
 
 describe('Robot class', () => {
-
-  let robot = new Robot
+  const testFile = 'test/testData/test3.test.txt'
+  let robot = new Robot(testFile)
 
   // it('check that robot talks string', () => {
   //   assert.isString(robot.talk(), 'string')
@@ -22,7 +22,7 @@ describe('Robot class', () => {
     })
   })
   
-  describe('printCommands()', ()=> {
+  describe('readInputData()', ()=> {
     it('', () => {
       
     })
@@ -150,21 +150,23 @@ describe('Robot class', () => {
       robot.report()
     
       // assert that it was called with the correct value
-      assert(spy.calledWith(`${robot.x}, ${robot.y}, ${robot.f}`))
+      assert(spy.calledWith(`Robot is at X: ${robot.x}, Y: ${robot.y} and facing ${robot.f}`))
 
       // restore the original function
       spy.restore()
     })
+  })
 
-
+  describe('output()', ()=> {
+    it('', () => {
+      
+    })
   })
 
   describe('run()', ()=> {
     it('', () => {
       
     })
-
-
   })
 
 })
