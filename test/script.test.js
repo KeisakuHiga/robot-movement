@@ -23,7 +23,6 @@ describe('Robot class', () => {
   })
   
   describe('printCommands()', ()=> {
-
     it('', () => {
       
     })
@@ -31,9 +30,10 @@ describe('Robot class', () => {
   })
 
   describe('place()', ()=> {
+    it('', () => { 
 
-    it('', () => {
-      
+
+
     })
 
   })
@@ -55,7 +55,7 @@ describe('Robot class', () => {
         assert.equal(robot.y, 4)
       })
     })
-    describe('robot faces WEST', () => {
+    describe('when robot faces WEST', () => {
       it('it can move forward unless it is at the table WEST edge', () => {
         robot.left()
         robot.move()
@@ -73,7 +73,7 @@ describe('Robot class', () => {
         robot.right()
       })
     })
-    describe('robot faces SOUTH', () => {
+    describe('when robot faces SOUTH', () => {
       it('it can move forward unless it is at the table SOUTH edge', () => {
         robot.move()
         assert.equal(robot.y, 4)
@@ -93,7 +93,7 @@ describe('Robot class', () => {
         robot.right()
       })
     })
-    describe('robot faces EAST', () => {
+    describe('when robot faces EAST', () => {
       it('it can move forward unless it is at the table EAST edge', () => {
         robot.right()
         robot.move()

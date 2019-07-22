@@ -1,4 +1,4 @@
 const Robot = require('./script')
 const newRobot = new Robot()
-newRobot.place()
-newRobot.run()
+// newRobot.place(2,4,'n')
+// newRobot.run()
