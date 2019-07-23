@@ -1,8 +1,5 @@
 const Robot = require('../src/script')
-// const assert = require('chai').assert
-// const expect = require('chai').expect
 const { assert, expect } = require('chai')
-const should = require('chai').should()
 const sinon  = require('sinon')
 
 describe('Test for robot1 which starts from x: 0, y: 0, and f: WEST', () => {
@@ -191,9 +188,26 @@ describe('Test for robot1 which starts from x: 0, y: 0, and f: WEST', () => {
   })
 
   describe('Test of run(commands) function', ()=> {
-    it('', () => {
-      
+    it('returns null when the first item of the commands does not include "PLACE"', () => {
+      const testArray1 = ['MOVE', 'PLACE 1,1,SOUTH', 'LEFT']
+      const result = robot1.run(testArray1)
+      assert.equal(result, null)
+    })
+    it('returns null even when the first command includes "PLACE" because place(line) function will return null when the command input is invalid', () => {
+      const testArray2 = ['place 0,2,west', 'PLACE 1,1,SOUTH', 'LEFT']
+      const result = robot1.run(testArray2)
+      assert.equal(result, null)
+    })
+    it('throws "error" when there is an invalid command', () => {
+      const testArray3 = ['PLACE 0,2,WEST', 'MOVE', 'JUMP']
+      const result = robot1.run(testArray3)
+      assert.equal(result, 'error')
+    })
+    it('when it succeeds, it returns the same value as the output() function', () => {
+      const testArray4 = ['PLACE 0,2,WEST', 'RIGHT', 'MOVE', 'RIGHT', 'MOVE']
+      const result = robot1.run(testArray4)
+      const output = robot1.output()
+      assert.equal(result, output)
     })
   })
-
 })

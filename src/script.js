@@ -142,8 +142,9 @@ class Robot {
           }
         })
         // create output file after all commands having done
-        this.output()
+        return this.output()
       } catch(err) {
+        console.log(err)
         return err
       }
     }
