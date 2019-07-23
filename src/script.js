@@ -13,16 +13,24 @@ class Robot {
 
 // read input data function from text file
   readInputData = (inputFilePath) => {
-    this.commands = fs.readFileSync(inputFilePath).toString().split("\n")
+    try {
+      const arrayOfCommands = fs.readFileSync(inputFilePath).toString().split("\n")
+      return this.commands = arrayOfCommands
+    } catch (err) {
+      return err
+    }
   }
 
   // if a PLACE command gives greater than 4 for x and y, and wrong directions
   // this command will return null
   place = (line) => {
-    this.x = line.slice(6,7)
-    this.y = line.slice(8,9)
+    const placeLetter = line.slice(0, 5)
+    this.x = line.slice(6, 7)
+    this.y = line.slice(8, 9)
     this.f = line.slice(10)
-    if(this.x < 0 || this.x > 4) {
+    if(placeLetter !== 'PLACE') {
+      return null
+    } else if(this.x < 0 || this.x > 4) {
       return null
     } else if(this.y < 0 || this.y > 4) {
       return null
@@ -37,31 +45,33 @@ class Robot {
     let option = this.f
     switch(option) {
       case "NORTH":
-        if(this.y === 4) {
+        if(this.y == 4) {
+          return null
         } else {
-          return this.y++
+          this.y++
+          return this.y
         }
-        break;
       case "SOUTH":
-        if(this.y === 0) {
+        if(this.y == 0) {
+          return null
         } else {
-          return this.y--
+          this.y--
+          return this.y
         }
-        break;
       case "EAST":
-        if(this.x === 4) {
+        if(this.x == 4) {
+          return null
         } else {
-          return this.x++
+          this.x++
+          return this.x
         }
-        break;
       case "WEST":
-        if(this.x === 0) {
+        if(this.x == 0) {
+          return null
         } else {
-          return this.x--
+          this.x--
+          return this.x
         }
-        break;
-      default:
-        console.log('Please enter a valid number!')
     }
   }
 
@@ -96,6 +106,7 @@ class Robot {
     fs.writeFile('src/output/output.txt', output, (err) => {
       if(err) throw err;
     })
+    return output
   }
 
   // if the first line of input data is not PLACE command,
@@ -133,7 +144,6 @@ class Robot {
         // create output file after all commands having done
         this.output()
       } catch(err) {
-        console.log(err)
         return err
       }
     }

@@ -1,1 +1,1 @@
-Output: 3, 3, NORTH
+Output: 1, 1, NORTH
