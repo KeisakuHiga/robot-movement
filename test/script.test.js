@@ -3,7 +3,7 @@ const { assert, expect } = require('chai')
 const sinon  = require('sinon')
 
 describe('Test for robot1 which starts from x: 0, y: 0, and f: WEST', () => {
-  const testFile = 'test/testData/test1.test.txt'
+  const testFile = 'test/testInput/test1.test.txt'
   let robot1 = new Robot(testFile)
   
   describe('Test of constructor(inputFilePath) function', () => {
@@ -17,12 +17,12 @@ describe('Test for robot1 which starts from x: 0, y: 0, and f: WEST', () => {
   
   describe('Test of readInputData(inputFilePath) function', ()=> {
     it('it will generate and return a new array of strings which are read from a input file', () => {
-      const correctFilePath = 'test/testData/test3.test.txt'
+      const correctFilePath = 'test/testInput/test2.test.txt'
       const arrayOfCommands = robot1.readInputData(correctFilePath)
       expect(arrayOfCommands).to.be.an('array')
     })
     it('if the input file path is not valid, it will return an error', () => {
-      const wrongFilePath = 'wrong/file/path/test3.test.txt'
+      const wrongFilePath = 'wrong/file/path/test2.test.txt'
       const arrayOfCommands = robot1.readInputData(wrongFilePath)
       assert.equal(arrayOfCommands.errno, -2)
     })
