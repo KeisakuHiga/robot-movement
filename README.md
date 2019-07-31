@@ -3,9 +3,8 @@ Toy robot movement simulator is written in Node.js.
 ## Table Of Contents
 
 - [Description](#description)
-- [Installation](#Application-Installation-Instructions)
-- [Operating Instructions](#Operating-Instructions)
-- [Testing Instructions](#Testing-Instructions)
+- [Installation and Operating Instructions](#installation-and-operating-instructions)
+- [Testing Instructions](#testing-instructions)
 
 ## Description
 - This application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units.
@@ -27,9 +26,50 @@ REPORT
 - Where REPORT will announce the X,Y and F of the robot. This can be in any form, but standard output is sufficient.
 - A robot that is not on the table can choose to ignore the MOVE, LEFT, RIGHT and REPORT commands.
 - There is not any graphical output showing the movement of the toy robot.
+- The toy robot must not fall off the table during movement. This also includes the initial placement of the toy robot. 
+- Any move that would cause the robot to fall must be ignored.
 
-## Constraints
-The toy robot must not fall off the table during movement. This also includes the initial placement of the toy robot. Any move that would cause the robot to fall must be ignored.
+## Installation and operating instructions
+### Prerequisites
+
+- The first thing you need to have is Node.js on your computer.You can download the Node.js installer from the Node.js website at: https://nodejs.org/en/download/
+
+- Once Node.js is installed, open a terminal and enter the `node --version` on command line to verify that it is installed correctly.
+
+### Installation procedures
+
+To get the application, just clone the repository, and change directory into it
+```
+$ git clone https://github.com/KeisakuHiga/robot-movement.git
+$ cd robot-movement
+```
+
+### Operating instructions
+
+Step1: Input your commands into `src/input/your_commands.txt`. Your commands should start PLACE command.
+
+Step2: Run `npm start` in your CLI
+
+Step3: You can see the output from `src/output/output.txt`
+
+
+## Testing instructions
+
+The following dependencies are used for the testing,
+
+- [chai](https://www.chaijs.com/)
+
+- [mocha](https://mochajs.org/)
+
+- [sinon](https://sinonjs.org/)
+
+- [nyc](https://github.com/istanbuljs/nyc)
+
+You should run the following commands in your CLI
+```
+$ npm install
+$ npm test
+```
 
 ## Example Input and Output
 ### Example1
