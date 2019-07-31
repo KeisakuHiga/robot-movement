@@ -1,1 +1,1 @@
-Output: 
+Output: 4, 0, EAST
