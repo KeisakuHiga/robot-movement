@@ -1,5 +1,5 @@
-# Toy Robot Movement Simulator (using Node.js)
-Toy robot movement simulator is written in Node.js.
+# Toy Robot Movement Simulator
+Toy robot movement simulator is written in **Node.js**.
 ## Table Of Contents
 
 - [Description](#description)
@@ -52,27 +52,8 @@ Step2: Run `npm start` in your CLI
 
 Step3: You can see the output from `src/output/output.txt`
 
-
-## Testing instructions
-
-The following dependencies are used for the testing,
-
-- [chai](https://www.chaijs.com/)
-
-- [mocha](https://mochajs.org/)
-
-- [sinon](https://sinonjs.org/)
-
-- [nyc](https://github.com/istanbuljs/nyc)
-
-You should run the following commands in your CLI
-```
-$ npm install
-$ npm test
-```
-
-## Example Input and Output
-### Example1
+### Input and output examples
+#### Example1
 ```
 Input1:
 PLACE 0,0,NORTH
@@ -83,7 +64,7 @@ REPORT
 Output1:
 0,1,NORTH
 ```
-### Example2
+#### Example2
 ```
 Input2:
 PLACE 0,0,NORTH
@@ -94,7 +75,7 @@ REPORT
 Output2:
 0,0,WEST
 ```
-### Example3
+#### Example3
 ```
 Input3:
 PLACE 1,2,EAST
@@ -107,4 +88,19 @@ REPORT
 ```
 Output3:
 3,3,NORTH
+```
+
+## Testing instructions
+
+The following dependencies are used for the testing,
+
+- [chai](https://www.chaijs.com/)
+- [mocha](https://mochajs.org/)
+- [sinon](https://sinonjs.org/)
+- [nyc](https://github.com/istanbuljs/nyc)
+
+You should run the following commands in your CLI
+```
+$ npm install
+$ npm test
 ```
